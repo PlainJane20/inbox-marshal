@@ -1,0 +1,51 @@
+# Inbox Marshal — Configuration
+# Edit this file to control what gets scanned and how it's organized.
+# Nothing here is specific to any one person's inbox — safe to share/fork.
+
+# ── Google OAuth ──────────────────────────────────────────────────────────────
+credentials_path: "credentials.json"   # OAuth client secret downloaded from Google Cloud Console
+token_path: "token.json"                # auto-created after your first login — gitignored, never share this file
+
+# ── Scan window ────────────────────────────────────────────────────────────────
+lookback_days: 7
+
+# ── Gmail labels this tool creates and applies ─────────────────────────────────
+# Change these names if you want different labels — the tool creates them
+# automatically on first run if they don't exist.
+labels:
+  malicious_spam: "Marshal/Flagged-Spam"
+  marketing_spam: "Marshal/Marketing-Spam"
+  payment_receipt: "Marshal/Receipts"
+  subscription_bill: "Marshal/Subscriptions-Bills"
+  security_alert: "Marshal/Security-Alert"
+
+# ── Trusted senders/domains ─────────────────────────────────────────────────────
+# Email from these domains is NEVER archived, labeled as spam, or touched in
+# any way, regardless of what the classifier thinks. Add your bank, employer,
+# doctor's office, etc. here as a hard safety floor independent of the model.
+trusted_domains: []
+  # - yourbank.com
+  # - yourdoctor.com
+
+# ── Model ──────────────────────────────────────────────────────────────────────
+claude_model: "claude-sonnet-5"
+
+# ── Safety ───────────────────────────────────────────────────────────────────────
+# This tool NEVER permanently deletes email. The strongest action it ever
+# takes is archive + label — the labels above are real, browsable Gmail
+# folders (left sidebar, any device). You review and delete from there
+# yourself; this tool only ever files things, never deletes them.
+# Unsubscribe requests only ever go out for mail classified as
+# "marketing_spam" (a real, identifiable sender with a standard
+# List-Unsubscribe mechanism) — never for "malicious_spam", where clicking
+# unsubscribe would just confirm your address is active. Unsubscribe is
+# ALSO never sent automatically — only via `--apply`'s explicit,
+# per-sender confirmation. `--auto` (for scheduled runs) never unsubscribes.
+require_confirmation: true
+
+# ── Notifications ──────────────────────────────────────────────────────────────
+# After each --auto run, show a native macOS notification banner with a
+# summary, and save the full detail to this file so you can open it for
+# the actual list. Set notify_macos to false to disable the banner.
+notify_macos: true
+report_path: "~/inbox-marshal-report.md"

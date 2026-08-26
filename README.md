@@ -1,5 +1,7 @@
 # Inbox Marshal
 
+### *Human-governed inbox hygiene with reversible automation by default*
+
 <div align="center">
 
 [![Python 3.9+](https://img.shields.io/badge/Python_3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
@@ -38,6 +40,25 @@ things without asking or require trusting a third-party SaaS with full
 inbox access. This runs entirely on your own machine, with your own Google
 Cloud project and your own API key — nothing about your inbox goes through
 a third party.
+
+## At a glance
+
+| | |
+|---|---|
+| **Problem** | Marketing noise hides receipts, bills, security notices, and messages that need attention |
+| **Approach** | Classify locally fetched Gmail messages, then apply least-destructive label/archive actions |
+| **Control model** | Dry run, interactive apply, and non-blocking scheduled modes with different permissions |
+| **Safety boundary** | Never permanently deletes; unsubscribe requires explicit per-sender confirmation |
+
+## Competencies demonstrated
+
+| Competency | Observable evidence |
+|---|---|
+| Human-centered automation | Reversible filing and confirmation requirements match action risk |
+| Privacy engineering | User-owned OAuth project, local execution, trusted-domain floor, and minimal retention |
+| Failure-safe design | Malformed model output defaults to `leave_alone` |
+| Operational design | Interactive and unattended modes cannot accidentally share blocking behavior |
+| Product thinking | Backlog cleanup and ongoing hygiene are treated as distinct user workflows |
 
 ## The safety model (read this before running it on your own inbox)
 

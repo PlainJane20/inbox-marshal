@@ -1,3 +1,5 @@
+<img src="docs/inbox-marshal-banner.svg" alt="Inbox Marshal — Human-Governed Automation" width="100%" />
+
 # Inbox Marshal
 
 ### *Human-governed inbox hygiene with reversible automation by default*

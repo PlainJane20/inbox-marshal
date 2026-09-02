@@ -39,6 +39,30 @@ inbox access. This runs entirely on your own machine, with your own Google
 Cloud project and your own API key — nothing about your inbox goes through
 a third party.
 
+### Named, specifically: how this differs from SaneBox, Clean Email, and Gmail's own AI
+
+- **SaneBox and Clean Email are both cloud services** — your mail is
+  fetched to their servers to be classified, which is the whole reason
+  they can offer a zero-setup signup flow. That convenience is the trade:
+  a third party reads your inbox. This tool never leaves your own machine
+  — classification happens locally against your own Anthropic key, using
+  your own Google Cloud project's OAuth credentials, so no inbox content
+  is ever sent to a company whose business model is inbox access.
+- **Gmail's own native Gemini cleanup features (Cleanup Suggestions, Smart
+  Folders) are the real long-term threat here, not SaneBox** — they're
+  free, built directly into the product you already use, and improving
+  fast. This tool doesn't try to out-feature Google inside Google's own
+  app. It exists for the part Google's native tools don't (and structurally
+  can't) offer: an *auditable, inspectable, run-it-yourself* pipeline —
+  every classification decision, every trusted-domain override, every
+  unsubscribe confirmation is a line of Python you can read, not a black
+  box inside Gmail's settings menu.
+- **The practical test:** if you trust Google with your inbox already
+  (you use Gmail), the question isn't "local vs. cloud" in the abstract —
+  it's whether you want a third *additional* party (SaneBox/Clean Email)
+  in the loop, or whether you'd rather run something you can read end to
+  end against credentials only you hold.
+
 ## The safety model (read this before running it on your own inbox)
 
 - **Never permanently deletes anything, in any mode.** The strongest

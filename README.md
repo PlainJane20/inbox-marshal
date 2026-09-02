@@ -62,15 +62,17 @@ a third party.
 | Operational design | Interactive and unattended modes cannot accidentally share blocking behavior |
 | Product thinking | Backlog cleanup and ongoing hygiene are treated as distinct user workflows |
 
-### The competency this is really practicing: privacy-preserving automation design
+### Privacy-preserving automation design
 
-The design skill this repo is built to demonstrate is running a real
-classification pipeline — Gmail fetch, Claude classification, filing,
-optional unsubscribe — entirely against credentials only I hold, with
-nothing routed through a third party whose business model is inbox
-access. Every classification decision, every trusted-domain override,
-every unsubscribe confirmation is a line of Python that's inspectable
-end to end, not a setting inside someone else's black box.
+> **The competency this is really practicing:** running a real
+> classification pipeline — Gmail fetch, Claude classification, filing,
+> optional unsubscribe — entirely against credentials only I hold, with
+> nothing routed through a third party whose business model is inbox
+> access.
+
+Every classification decision, every trusted-domain override, every
+unsubscribe confirmation is a line of Python that's inspectable end to
+end, not a setting inside someone else's black box.
 
 For context on the tradeoff that design choice makes: **SaneBox and
 Clean Email** are both cloud services — your mail is fetched to their

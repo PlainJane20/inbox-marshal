@@ -17,6 +17,18 @@ Gmail spam cleanup and receipt/subscription organization, built to be run
 by anyone on their own inbox — not a personal script, a general-purpose
 tool. Nothing in this repo is specific to any one person's email account.
 
+> **Related work in this portfolio:** this one isn't a companion to the
+> TPM/PgM program-management tools most of this portfolio is built
+> around — it's a personal-productivity tool in a genuinely different
+> domain. The design pattern it does share is with
+> [agent-control-tower](https://github.com/PlainJane20/agent-control-tower):
+> both gate anything with an external, hard-to-undo effect (there, a
+> Slack post, Jira write, or email send; here, an unsubscribe or a
+> mailbox action) behind an explicit human-approval step, and both keep
+> an auditable, non-destructive trail instead of acting silently. Not a
+> shared pipeline or any shared code — the same reversible-automation,
+> human-stays-in-the-loop instinct applied to two unrelated problems.
+
 ## What it does
 
 1. Scans your Gmail inbox (a configurable time window)

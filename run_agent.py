@@ -62,7 +62,17 @@ def load_config() -> dict:
 
 
 def is_trusted(email: dict, trusted_domains: list) -> bool:
-    return any(email["sender_domain"].endswith(d) for d in trusted_domains)
+    """True only if the sender domain equals a trusted domain or is a true
+    subdomain of one (e.g. mail.bank.com for bank.com). A bare suffix match
+    is NOT enough: notbank.com must not match bank.com."""
+    sender = (email.get("sender_domain") or "").strip().lower().rstrip(".")
+    if not sender:
+        return False
+    for d in trusted_domains or []:
+        d = str(d).strip().lower().lstrip(".")
+        if d and (sender == d or sender.endswith("." + d)):
+            return True
+    return False
 
 
 def scan(service, cfg: dict, api_key: str) -> dict:

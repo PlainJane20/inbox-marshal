@@ -61,8 +61,17 @@ a third party.
 |---|---|
 | **Problem** | Marketing noise hides receipts, bills, security notices, and messages that need attention |
 | **Approach** | Classify locally fetched Gmail messages, then apply least-destructive label/archive actions |
+| **Pattern** | Deterministic pipeline with an LLM classifier step; human-gated apply, not an agent loop (see [Architecture pattern](#architecture-pattern)) |
 | **Control model** | Dry run, interactive apply, and non-blocking scheduled modes with different permissions |
 | **Safety boundary** | Never permanently deletes; unsubscribe requires explicit per-sender confirmation |
+
+## Architecture pattern
+
+**Deterministic pipeline with an LLM classifier (not an agent loop), with a human-gated apply step.** `run_agent.py` fetches mail (`gmail_client.py`), skips `trusted_domains` with plain code (`is_trusted`), and sends each remaining email to one forced-tool Claude call (`classifier.classify_email`). The returned category then selects a fixed, bounded action (label, or archive plus label) in code.
+
+- **Deterministic vs model-driven:** The model chooses the category, and that choice does drive which action is taken, so it is more than narration. The action table, the trusted-domain floor, the never-delete rule and the unsubscribe mechanism (`unsubscribe.py`, `List-Unsubscribe` header only) are deterministic, and each email is judged independently with no memory or planning.
+- **Human gate:** `--scan` changes nothing, `--apply` confirms before filing and per sender before any unsubscribe, and `--auto` files without a prompt (labels and archives only, never unsubscribes).
+- **Honest limit:** The scheduled `--auto` mode has no human approval and relies on a single model classification per email. Archiving is reversible but a misclassified email can still be hidden, and `trusted_domains` ships empty so the hard floor protects nothing until it is filled in.
 
 ## Competencies demonstrated
 

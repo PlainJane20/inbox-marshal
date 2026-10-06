@@ -70,7 +70,7 @@ a third party.
 |---|---|
 | Human-centered automation | Reversible filing and confirmation requirements match action risk |
 | Privacy engineering | User-owned OAuth project, local execution, trusted-domain floor, and minimal retention |
-| Failure-safe design | Malformed model output defaults to `leave_alone` |
+| Failure-safe design | Malformed model output defaults to `leave_alone` (implemented in `classifier.py`; not yet covered by automated tests) |
 | Operational design | Interactive and unattended modes cannot accidentally share blocking behavior |
 | Product thinking | Backlog cleanup and ongoing hygiene are treated as distinct user workflows |
 
@@ -115,10 +115,29 @@ structurally can't offer.
   every sender by name before anything gets sent.
 - **`trusted_domains` in `config.yaml`** is a hard floor independent of the
   model — add your bank, employer, doctor's office, etc., and those
-  domains are never touched regardless of what the classifier thinks.
+  domains (and their true subdomains, e.g. `mail.yourbank.com`) are never
+  touched regardless of what the classifier thinks. **It ships empty**
+  (`trusted_domains: []`), so the floor protects nothing until you fill it in.
 - **A malformed classification always fails toward the least destructive
   option.** If the model's output doesn't parse as a valid category, the
   email is left alone rather than risk-defaulting to something aggressive.
+  (This fallback is real code in `classifier.py`, but it is not currently
+  covered by automated tests.)
+
+## Known limitations
+
+- **Classification quality is unmeasured.** There is no evaluation set, no
+  precision/recall numbers, and no `eval/` harness yet. How often Claude
+  mislabels a real email as spam (or vice versa) has not been quantified, so
+  use `--scan` first and review what it would do.
+- **`trusted_domains` is empty by default.** Until you add your bank,
+  employer, etc., nothing is protected by the hard floor.
+- **Test coverage is thin.** Tests currently cover `List-Unsubscribe` parsing
+  and trusted-domain matching. The classifier, its fail-safe fallback, the
+  Gmail client, and the `--auto` flow are untested.
+- **Trusted-domain matching is on the sender's `From` domain only**, which is
+  not authenticated by this tool; a spoofed `From` header can match a trusted
+  domain.
 
 ## Two operating modes
 

@@ -2,7 +2,7 @@
 
 # Inbox Marshal
 
-### *Human-governed inbox hygiene with reversible automation by default*
+### *Inbox hygiene with reversible automation by default; human-confirmed in `--apply`, unattended in `--auto`*
 
 <div align="center">
 
@@ -22,10 +22,11 @@ tool. Nothing in this repo is specific to any one person's email account.
 > around — it's a personal-productivity tool in a genuinely different
 > domain. The design pattern it does share is with
 > [agent-control-tower](https://github.com/PlainJane20/agent-control-tower):
-> both gate anything with an external, hard-to-undo effect (there, a
-> Slack post, Jira write, or email send; here, an unsubscribe or a
-> mailbox action) behind an explicit human-approval step, and both keep
-> an auditable, non-destructive trail instead of acting silently. Not a
+> both aim to put anything with an external, hard-to-undo effect (there, a
+> Slack post, Jira write, or email send; here, an unsubscribe) behind an
+> explicit human-approval step. Here that holds for unsubscribe and for
+> `--apply`; the scheduled `--auto` mode files mail with no approval, and
+> this repo writes no audit log (only the Gmail labels themselves). Not a
 > shared pipeline or any shared code — the same reversible-automation,
 > human-stays-in-the-loop instinct applied to two unrelated problems.
 
@@ -139,6 +140,10 @@ structurally can't offer.
   precision/recall numbers, and no `eval/` harness yet. How often Claude
   mislabels a real email as spam (or vice versa) has not been quantified, so
   use `--scan` first and review what it would do.
+- **`--auto` has no human approval.** It archives and labels on the model's
+  single classification per email, and the category it returns decides the
+  action. Archiving is reversible, but a misclassified email can sit hidden
+  in a `Marshal/` folder until you look; it only notifies you afterward.
 - **`trusted_domains` is empty by default.** Until you add your bank,
   employer, etc., nothing is protected by the hard floor.
 - **Test coverage is thin.** Tests currently cover `List-Unsubscribe` parsing

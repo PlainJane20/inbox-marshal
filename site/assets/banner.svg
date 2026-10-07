@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" role="img" aria-labelledby="title description">
+  <title id="title">Inbox Marshal</title>
+  <desc id="description">Reversible inbox hygiene with privacy, safety, and human control built in.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#081a2a"/>
+      <stop offset="0.56" stop-color="#12354d"/>
+      <stop offset="1" stop-color="#0f766e" stop-opacity=".72"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#6ee7b7" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#6ee7b7" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#030b13" flood-opacity=".38"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="320" rx="24" fill="url(#bg)"/>
+  <circle cx="1035" cy="55" r="230" fill="url(#glow)"/>
+  <g opacity=".16" fill="none" stroke="#6ee7b7" stroke-width="1.2" color="#6ee7b7"><path d="M770 76h105l42 40h101l42 40h89M770 146h78l42 40h121l42 40h96M770 216h54l42 40h116"/><g fill="currentColor" stroke="none"><circle cx="875" cy="76" r="5"/><circle cx="917" cy="116" r="5"/><circle cx="1018" cy="116" r="5"/><circle cx="890" cy="186" r="5"/><circle cx="1011" cy="186" r="5"/></g></g>
+  <g transform="translate(74 68)" filter="url(#shadow)">
+    <rect width="88" height="88" rx="22" fill="#102f45" stroke="#6ee7b7" stroke-opacity=".58"/>
+    <g fill="none" stroke="#6ee7b7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" color="#6ee7b7"><rect x="12" y="19" width="64" height="48" rx="8"/><path d="M15 25l29 23 29-23"/><path d="M55 60l9 9 15-20" stroke-width="4"/></g>
+  </g>
+  <text x="190" y="112" fill="#ffffff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="50" font-weight="750" letter-spacing="-1">Inbox Marshal</text>
+  <text x="192" y="153" fill="#6ee7b7" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="2.5">HUMAN-GOVERNED AUTOMATION</text>
+  <text x="75" y="225" fill="#dcebf0" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="21">Reversible inbox hygiene with privacy, safety, and human</text>
+  <text x="75" y="258" fill="#dcebf0" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="21">control built in.</text>
+  <g transform="translate(822 168)" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" font-weight="700"><g transform="translate(0 0)"><rect width="102" height="42" rx="21" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".2"/><text x="51" y="26" text-anchor="middle" fill="#edf7fa">never deletes</text></g><g transform="translate(112 0)"><rect width="102" height="42" rx="21" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".2"/><text x="51" y="26" text-anchor="middle" fill="#edf7fa">local control</text></g><g transform="translate(224 0)"><rect width="114" height="42" rx="21" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".2"/><text x="57" y="26" text-anchor="middle" fill="#edf7fa">human confirmed</text></g></g>
+</svg>

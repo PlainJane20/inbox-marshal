@@ -10,6 +10,8 @@
 [![Powered by Claude](https://img.shields.io/badge/Powered_by-Claude-D97757?style=for-the-badge&logo=anthropic&logoColor=white)](https://www.anthropic.com/)
 [![Gmail API](https://img.shields.io/badge/Gmail_API-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](https://developers.google.com/gmail/api)
 [![Never deletes](https://img.shields.io/badge/Deletes-Never-1baf7a?style=for-the-badge)]()
+[![CI](https://img.shields.io/github/actions/workflow/status/PlainJane20/inbox-marshal/ci.yml?branch=main&style=for-the-badge&label=CI)](https://github.com/PlainJane20/inbox-marshal/actions/workflows/ci.yml)
+[![MIT License](https://img.shields.io/badge/License-MIT-6b7280?style=for-the-badge)](LICENSE)
 
 </div>
 
@@ -231,6 +233,10 @@ launchctl load -w ~/Library/LaunchAgents/com.<you>.inbox-marshal.plist
 
 Default schedule is 8am / 1pm / 6pm daily — edit the `StartCalendarInterval`
 entries in the plist to change it.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
 
 ## Contact
 
